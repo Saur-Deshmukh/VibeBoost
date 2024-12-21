@@ -5,32 +5,14 @@ import TextInput from "./TextInput";
 import buttonDescriptions from "./Assets/Button-content";
 import WebcamCapture from "./webcam";
 import { useNavigate } from 'react-router-dom';
-import Login from "../screens/auth/Login";
-import { setClientToken } from '../spotify';
 import axios from 'axios';
 
 function Main() {
-    const [token, setToken] = useState("");
     const [showTextBox, setShowTextBox] = useState(false);  
     const [inputValue, setInputValue] = useState('');
     const [inputImage, setInputImage] = useState('');
     const [showWebCam, setShowWebCam] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        const hash = window.location.hash;
-        window.location.hash = "";
-
-        if (!token && hash) {
-            const _token = hash.split("&")[0].split("=")[1];
-            window.localStorage.setItem("token", _token);
-            setToken(_token);
-            setClientToken(_token);
-        } else {
-            setToken(token);
-        }
-    }, []);
 
     const handleButtonClick = (index) => {
         if (index === 1) {
@@ -94,9 +76,7 @@ function Main() {
         }
     }, [inputImage]);
 
-    return !token ? (
-        <Login />
-    ) : (
+    return (
         <>
             <DescriptionBox />
             <div className="m-8 p-6 border-2 border-purple-400 rounded-lg">
