@@ -9,6 +9,9 @@ import GenreTracks from './Components/music';
 import { setClientToken } from './spotify';
 import Output from './Components/Output';
 
+//Books:
+import BookDetails from './Components/Books/BookDetails';
+import BookList from './Components/Books/BookList';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Routes>
           <Route path='/' element = {<Main />}/>
           <Route path='/output' element = {<Output />}/>
+          {/* Books: */}
+          <Route path='/books' element= {<BookList />}></Route>
+          <Route path="/details/:id" element={<BookDetails />} />
         </Routes>
       </BrowserRouter>
       
