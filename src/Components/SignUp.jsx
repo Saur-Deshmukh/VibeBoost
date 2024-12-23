@@ -17,7 +17,7 @@ const Signup = () => {
         setError("Passwords do not match.");
         return;
       }
-      const response = await axios.post('http://127.0.0.1:8000/signup/', {
+      const response = await axios.post('https://vibeboost.onrender.com/signup/', {
         username: username,
         email: email,
         password: password,

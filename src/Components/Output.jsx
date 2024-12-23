@@ -22,7 +22,7 @@ function Output() {
 
             try {
                 // Make the request with the token
-                const response = await axios.get('http://localhost:8000/text/', config);
+                const response = await axios.get('https://vibeboost.onrender.com/text/', config);
                 setEmotion(response.data.emotion);
             } catch (error) {
                 console.error("Error fetching emotion:", error);

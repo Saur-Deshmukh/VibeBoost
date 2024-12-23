@@ -31,7 +31,7 @@ function Main() {
             }
         };
 
-        axios.post('http://localhost:8000/text/', textData, config)
+        axios.post('https://vibeboost.onrender.com/text/', textData, config)
             .then(() => {
                 navigate('/output');
             })
