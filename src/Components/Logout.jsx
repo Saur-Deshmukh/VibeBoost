@@ -5,7 +5,6 @@ const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear the token from localStorage
     localStorage.removeItem('authToken');
     navigate('/login');
     window.location.reload(false);

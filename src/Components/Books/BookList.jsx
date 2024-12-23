@@ -4,8 +4,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import { motion } from "framer-motion"; // Import framer-motion for animations
-import { X } from 'lucide-react'; // Assuming you're using some icon library for close button
+import { motion } from "framer-motion";
+import { X } from 'lucide-react';
 
 
 function BookList(props) {
@@ -14,7 +14,7 @@ function BookList(props) {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedBookData, setSelectedBookData] = useState(null);
   const [id,setId]=useState(null);
-  const genre = props.genre; // Change the genre as needed
+  const genre = props.genre;
  
 
   useEffect(() => {
@@ -32,14 +32,14 @@ function BookList(props) {
 
   const handleShowDetails = (book) => {
     setSelectedBook(book);
-    setId(book.key.split("/")[2]); // Set the selected book
-    setShowModal(true); // Show the modal
+    setId(book.key.split("/")[2]);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
     setSelectedBook(null);
     setId(null);
-    setShowModal(false); // Hide the modal
+    setShowModal(false);
   };
 
   return (
@@ -70,7 +70,7 @@ function BookList(props) {
               />
               <h3 className="text-lg font-semibold text-center text-white">{book.title}</h3>
               <button
-                onClick={() => handleShowDetails(book)} // Show the modal with book details
+                onClick={() => handleShowDetails(book)}
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
                 Show Details
@@ -79,8 +79,6 @@ function BookList(props) {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Modal - Book Details */}
       {showModal && selectedBook && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -96,7 +94,6 @@ function BookList(props) {
             className="relative bg-gradient-to-br from-gray-800 to-blue-900 rounded-3xl p-10 max-w-4xl w-full shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={handleCloseModal}
               className="absolute top-4 right-4 z-[70] bg-black/60 hover:bg-black/80 p-3 rounded-full text-white hover:text-blue-400 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -105,7 +102,6 @@ function BookList(props) {
             </button>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Left Section: Image */}
               <div className="flex justify-center items-center">
                 <img
                   src={`https://covers.openlibrary.org/b/id/${selectedBook.cover_id}-L.jpg`}
@@ -113,8 +109,6 @@ function BookList(props) {
                   className="w-full max-w-xs rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
                 />
               </div>
-
-              {/* Right Section: Content */}
               <div>
                 <h2 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
                   {selectedBook.title}

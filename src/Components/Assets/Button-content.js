@@ -4,7 +4,7 @@ const buttonDescriptions = [
     
     {
         content: "Detect using Text.",
-        icon: textIcon, // Use the imported SVG
+        icon: textIcon,
     }
 ];
 

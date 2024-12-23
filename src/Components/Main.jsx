@@ -25,11 +25,9 @@ function Main() {
         const textData = { text: inputValue };
 
         const token = localStorage.getItem("authToken");
-
-    // If the token exists, include it in the request headers
         const config = {
             headers: {
-                Authorization: `Token ${token}`,  // Prefix 'Token' followed by the token
+                Authorization: `Token ${token}`,
             }
         };
 

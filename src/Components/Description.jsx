@@ -2,13 +2,13 @@ import DescriptionBG from './Assets/images/DescriptionBG.png';
 
 function DescriptionBox() {
   return (
-      <div className="relative w-full h-[100vh]"> {/* Set a fixed height */}
+      <div className="relative w-full h-[100vh]">
           <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
                   backgroundImage: `url(${DescriptionBG})`,
-                  backgroundSize: "cover", // Ensures the image covers the entire area
-                  backgroundPosition: "center", // Centers the image
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
               }}
           />
           <div className="relative z-10 w-full h-full bg-gradient-to-r from-black to-transparent text-white p-6 flex flex-col justify-center">
