@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import Button from "./Button";
 import DescriptionBox from "./Description";
 import TextInput from "./TextInput"; 
@@ -24,21 +24,33 @@ function Main() {
        
         const textData = { text: inputValue };
 
-        axios.post('http://localhost:8000/text/', textData)
-        .then(() => {
-            navigate('/output');
-        })
-        .catch((error) => {
-            console.error('Error detecting text emotion:', error);
-        });
-        
+        const token = localStorage.getItem("authToken");
+
+    // If the token exists, include it in the request headers
+        const config = {
+            headers: {
+                Authorization: `Token ${token}`,  // Prefix 'Token' followed by the token
+            }
+        };
+
+        axios.post('http://localhost:8000/text/', textData, config)
+            .then(() => {
+                navigate('/output');
+            })
+            .catch((error) => {
+                console.error('Error detecting text emotion:', error);
+            });
     };
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
-    
+    useEffect(() => {
+        if (localStorage.getItem('authToken') === null) {
+            navigate('/login');
+        }
+    }, []);
 
     return (
         <>
@@ -52,7 +64,7 @@ function Main() {
                                 key={index} 
                                 text={description.content} 
                                 icon={description.icon} 
-                                onClick={() => handleButtonClick(index)} 
+                                onClick={() => handleButtonClick()} 
                             />
                         ))}
                     </div>

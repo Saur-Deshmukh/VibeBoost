@@ -17,13 +17,7 @@ function MovieList(props) {
   const [showModal, setShowModal] = useState(false);
   const genre = props.genre;
   const idToName = {
-
-    28:"Action",
-    35:"Comedy",
     12:"Adventure",
-    878:"Science Fiction",
-    99:"Documentary",
-    10751:"Family",
     14:"Fantasy",
     18:"Drama",
     10402:"Music",

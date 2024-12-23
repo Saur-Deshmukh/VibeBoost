@@ -7,8 +7,9 @@ const Logout = () => {
   const handleLogout = () => {
     // Clear the token from localStorage
     localStorage.removeItem('authToken');
+    navigate('/login');
+    window.location.reload(false);
     alert("Logged out successfully.");
-    navigate('/login');  // Redirect to login page after logout
   };
 
   return (

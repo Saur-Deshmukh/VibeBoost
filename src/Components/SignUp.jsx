@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -7,6 +8,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ const Signup = () => {
         setError("Passwords do not match.");
         return;
       }
-      const response = await axios.post('http://127.0.0.1:8000/add_user', {
+      const response = await axios.post('http://127.0.0.1:8000/signup/', {
         username: username,
         email: email,
         password: password,
@@ -23,6 +25,7 @@ const Signup = () => {
       });
       if (response.status === 201) {
         setError('');
+        navigate('/login');
         alert("Signup successful");
       }
     } catch (err) {

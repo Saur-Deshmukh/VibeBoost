@@ -11,6 +11,10 @@ function Header(){
             <li>
               <a href="/" className="hover:text-gray-200">Home</a>
             </li>
+            {localStorage.getItem("authToken")!== null &&<li>
+              <a href="/logout" className="hover:text-gray-200">Logout</a>
+            </li>}
+            
             <li>
               <a href="#about" className="hover:text-gray-200 pr-3">About Us</a>
             </li>

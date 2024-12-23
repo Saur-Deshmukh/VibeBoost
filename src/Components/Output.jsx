@@ -10,24 +10,29 @@ function Output() {
 
     useEffect(() => {
         async function fetchEmotion() {
-            
+            // Retrieve the token from localStorage
+            const token = localStorage.getItem("authToken");
+
+            // If the token exists, include it in the request headers
+            const config = {
+                headers: {
+                    Authorization: `Token ${token}`,  // Prefix 'Token' followed by the token
+                }
+            };
+
             try {
-                const response = await axios.get('http://localhost:8000/text/');
+                // Make the request with the token
+                const response = await axios.get('http://localhost:8000/text/', config);
                 setEmotion(response.data.emotion);
             } catch (error) {
                 console.error("Error fetching emotion:", error);
             }
         }
+
         fetchEmotion();
     }, []);
     const moodToGenreMovie = {
-
-        angry: 28,
-        disgust: 35,
         fear: 12,
-        happy: 878,
-        neutral: 99,
-        sad: 10751,
         surprise: 14,
         sadness: 18,
         joy: 10402,
@@ -35,14 +40,7 @@ function Output() {
         anger: 53
     };
     const moodToGenreBook = {
-
-        
-        angry: "politics",
-        disgust: "horror",
         fear: "mystery_and_detective_stories",
-        happy: "romance",
-        neutral: "philosophy",
-        sad: "poetry",
         surprise: "fantasy",
         sadness: "historical_fiction",
         joy: "children",
@@ -57,10 +55,10 @@ function Output() {
             {genreMovie&&<MovieList genre = {genreMovie}/>}
             {genreBook&&<BookList genre = {genreBook}/>}
             {
-                (emotion ==='happy' || emotion ==='joy' || emotion ==='love' ||emotion ==='neutral' || emotion ==='surprise' || emotion === 'disgust' ) && <Meme />
+                (emotion ==='joy' || emotion ==='love' || emotion ==='surprise') && <Meme />
             }
             {
-                (emotion ==='anger' || emotion ==='sadness' || emotion ==='sad' ||emotion ==='fear' || emotion === 'angry') && <Motivation />
+                (emotion ==='anger' || emotion ==='sadness'||emotion ==='fear') && <Motivation />
                 
             }
         </>
