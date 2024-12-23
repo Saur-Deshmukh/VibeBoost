@@ -2,34 +2,21 @@ import React, { useEffect, useState } from 'react';
 import Meme from './Meme';
 import Motivation from './Motivation';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
 import MovieList from './Movies/MovieList';
 import BookList from './Books/BookList';
 
 function Output() {
-    const { state } = useLocation();
-    const { showTextBox, showWebCam } = state || {};
     const [emotion, setEmotion] = useState("");
 
     useEffect(() => {
         async function fetchEmotion() {
-            if(showTextBox){
-                try {
-                    const response = await axios.get('http://localhost:8000/text/');
-                    setEmotion(response.data.emotion);
-                } catch (error) {
-                    console.error("Error fetching emotion:", error);
-                }
-            }
-            else if (showWebCam){
-                try {
-                    const response = await axios.get('http://localhost:8000/image/');
-                    setEmotion(response.data.emotion);
-                } catch (error) {
-                    console.error("Error fetching emotion:", error);
-                }
-            }
             
+            try {
+                const response = await axios.get('http://localhost:8000/text/');
+                setEmotion(response.data.emotion);
+            } catch (error) {
+                console.error("Error fetching emotion:", error);
+            }
         }
         fetchEmotion();
     }, []);
