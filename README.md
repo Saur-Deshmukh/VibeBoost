@@ -32,8 +32,8 @@ The backend code for this project is hosted in a separate repository. Access it 
    cd VibeBoost-Frontend  
    npm install  
 3.Start the React frontend:
-```bash
-npm run dev
-```
+  ```bash
+  npm run dev
+  ```
 4.Clone the backend repository and follow the instructions in its README for setup.
 
