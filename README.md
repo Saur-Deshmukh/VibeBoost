@@ -1,4 +1,4 @@
-# VibeBoost: Personalized Memes and Motivation  
+# VibeBoost
 
 VibeBoost is an AI-powered mood enhancer designed to detect emotions from user input and provide personalized recommendations. Whether you're feeling positive or need a motivational boost, VibeBoost is here to help!  
 
